@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="tmrocha-jenkins-lib:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tmrocha_jenkins_lib_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="tmrocha-jenkins-lib/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
