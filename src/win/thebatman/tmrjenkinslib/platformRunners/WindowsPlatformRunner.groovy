@@ -11,13 +11,10 @@ public class WindowsPlatformRunner implements IPlatformRunner {
     }
 
     @Override
-    void Run(String command) {
-
-        this.ctx.echo "Runner is $runner"
-        if(this.runner.equals("bat")){
+    void run(String command) {
+        if(this.runner == "bat"){
             this.ctx.bat "$command"
         }
-        this.ctx.echo "end"
     }
 
 }

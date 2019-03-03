@@ -4,7 +4,7 @@ import win.thebatman.tmrjenkinslib.platformRunners.IPlatformRunner
 
 class MsBuildBuilder implements ICompiler {
 
-    private steps
+    private ctx
     private msbuild
     private String projectPath
     private List<String> parametersList
@@ -16,10 +16,10 @@ class MsBuildBuilder implements ICompiler {
         this.parametersList = new ArrayList<>()
     }
 
-    MsBuildBuilder(String toolPath, steps, IPlatformRunner runner){
+    MsBuildBuilder(String toolPath, context, IPlatformRunner runner){
         this()
         this.msbuild = toolPath
-        this.steps = steps
+        this.ctx = context
         this.runner = runner
     }
 
@@ -72,12 +72,12 @@ class MsBuildBuilder implements ICompiler {
 
     @Override
     void run(){
-        this.runner.Run(this.getCommand())
+        this.runner.run(this.getCommand())
     }
 
     @Override
     String getCommand(){
-        return "${this.msbuild} \"${this.projectPath}\" ${this.getParams()}"
+        return "\"${this.msbuild}\" \"${this.projectPath}\" ${this.getParams()}"
     }
 
     private String getParams(){
