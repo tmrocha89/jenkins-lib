@@ -25,7 +25,7 @@ class MsBuildBuilderTest extends GroovyTestCase {
         String project = "project1.sln"
         String param1 = "paramter1"
         String param2 = "parameter2"
-        String expected = "msbuild.exe \"$project\" $param1 $param2"
+        String expected = "\"msbuild.exe\" \"$project\" $param1 $param2"
         builder.addProject(project)
                 .addParameter(param1)
                 .addParameter(param2)
@@ -37,7 +37,7 @@ class MsBuildBuilderTest extends GroovyTestCase {
         String project = "project1.sln"
         String config = "Debug"
         String platform = "x64"
-        String expected = "msbuild.exe \"$project\" /t:clean /t:build /t:rebuild /p:Configuration=$config /p:Platform=$platform"
+        String expected = "\"msbuild.exe\" \"$project\" /t:clean /t:build /t:rebuild /p:Configuration=$config /p:Platform=$platform"
         builder.addProject(project)
                 .setToClean()
                 .setToBuild()
