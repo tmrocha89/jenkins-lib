@@ -3,19 +3,21 @@ package win.thebatman.tmrjenkinslib.platformRunners;
 public class WindowsPlatformRunner implements IPlatformRunner {
 
     private runner
+    private ctx
 
-    WindowsPlatformRunner(runner='bat'){
+    WindowsPlatformRunner(context, runner='bat'){
+        this.ctx = context
         this.runner = runner
     }
 
     @Override
     void Run(String command) {
 
-        echo "Runner is $runner"
+        this.ctx.echo "Runner is $runner"
         if(this.runner.equals("bat")){
-            bat: "$command"
+            this.ctx.bat "$command"
         }
-        echo "end"
+        this.ctx.echo "end"
     }
 
 }
