@@ -1,11 +1,14 @@
 package win.thebatman.tmrjenkinslib.compilers
 
+import win.thebatman.tmrjenkinslib.platformRunners.IPlatformRunner
+
 class MsBuildBuilder implements ICompiler {
 
     private steps
     private msbuild
     private String projectPath
     private List<String> parametersList
+    private IPlatformRunner runner
 
     MsBuildBuilder(){
         this.msbuild = "msbuild.exe"
@@ -13,9 +16,11 @@ class MsBuildBuilder implements ICompiler {
         this.parametersList = new ArrayList<>()
     }
 
-    MsBuildBuilder(steps){
+    MsBuildBuilder(String toolPath, steps, IPlatformRunner runner){
         this()
+        this.msbuild = toolPath
         this.steps = steps
+        this.runner = runner
     }
 
     @Override
@@ -67,7 +72,7 @@ class MsBuildBuilder implements ICompiler {
 
     @Override
     void run(){
-        throw new Exception("Not Implemented")
+        this.runner.Run(this.getCommand())
     }
 
     @Override
