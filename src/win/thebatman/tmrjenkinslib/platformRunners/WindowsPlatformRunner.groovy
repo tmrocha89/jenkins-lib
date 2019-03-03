@@ -11,9 +11,11 @@ public class WindowsPlatformRunner implements IPlatformRunner {
     @Override
     void Run(String command) {
 
+        echo "Runner is $runner"
         if(this.runner.equals("bat")){
             bat: "$command"
         }
+        echo "end"
     }
 
 }
