@@ -14,6 +14,6 @@ class GitVersionControlSystem implements IVersionControlSystem {
 
     @Override
     void CloneCurrentProject() {
-        this.ctxcheckout this.ctx.scm
+        this.ctx.checkout this.ctx.scm
     }
 }
