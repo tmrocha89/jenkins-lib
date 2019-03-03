@@ -4,16 +4,16 @@ public class WindowsPlatformRunner implements IPlatformRunner {
 
     private runner
 
-    WindowsPlatformRunner(runner){
-        if(runner == null)
-            throw new RuntimeException("Valid runner not set")
-
-        this.runner = runner;
+    WindowsPlatformRunner(runner='bat'){
+        this.runner = runner
     }
 
     @Override
     void Run(String command) {
-        this.runner(command)
+
+        if(this.runner.equals("bat")){
+            bat: "$command"
+        }
     }
 
 }
