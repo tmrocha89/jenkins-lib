@@ -22,7 +22,7 @@ class ZipCompressionBuilder implements ICompressionBuilder{
 
     @Override
     ICompressionBuilder setDirectory(String directoryPath) {
-        this.dirPath = "\"$directoryPath\""
+        this.dirPath = "$directoryPath"
         return this
     }
 
