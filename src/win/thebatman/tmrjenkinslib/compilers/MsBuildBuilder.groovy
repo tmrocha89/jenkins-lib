@@ -99,7 +99,7 @@ class MsBuildBuilder implements ICompiler {
         if(this.passwordCredentialId == null )
             this.runner.run(this.getCommand())
         else
-            this.ctx.withCredentials([this.ctx.string(credentialsId: "${this.passwordCredentialId}", this.ctx.variable: 'PASSWORD')]) {
+            this.ctx.withCredentials([this.ctx.string(credentialsId: "${this.passwordCredentialId}", variable: 'PASSWORD')]) {
                 this.runner.run(this.getCommand()+ " " + this.getPasswordParam("$PASSWORD"))
             }
     }
