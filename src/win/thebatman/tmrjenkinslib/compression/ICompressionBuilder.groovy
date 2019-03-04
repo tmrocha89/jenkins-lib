@@ -6,7 +6,7 @@ interface ICompressionBuilder {
 
     ICompressionBuilder setDirectory(String directoryPath);
 
-    ICompressionBuilder addFilePatternToExclude(String pattern);
+    ICompressionBuilder addFilePatternToInclude(String pattern);
 
     ICompressionBuilder archiveAsArtifact(boolean isToArchive);
 

@@ -27,7 +27,7 @@ class ZipCompressionBuilder implements ICompressionBuilder{
     }
 
     @Override
-    ICompressionBuilder addFilePatternToExclude(String pattern) {
+    ICompressionBuilder addFilePatternToInclude(String pattern) {
         this.globPattern.add(pattern)
         return this
     }
