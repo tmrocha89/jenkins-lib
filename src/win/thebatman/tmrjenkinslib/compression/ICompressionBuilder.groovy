@@ -4,7 +4,7 @@ interface ICompressionBuilder {
 
     ICompressionBuilder setFileName(String fileName);
 
-    ICompressionBuilder setDirectoryPath(String directoryPath);
+    ICompressionBuilder setDirectory(String directoryPath);
 
     ICompressionBuilder addFilePatternToExclude(String pattern);
 

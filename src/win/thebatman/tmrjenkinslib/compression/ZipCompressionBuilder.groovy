@@ -21,7 +21,7 @@ class ZipCompressionBuilder implements ICompressionBuilder{
     }
 
     @Override
-    ICompressionBuilder setDirectoryPath(String directoryPath) {
+    ICompressionBuilder setDirectory(String directoryPath) {
         this.dirPath = "\"$directoryPath\""
         return this
     }
