@@ -9,11 +9,17 @@ class MsBuildBuilder implements ICompiler {
     private String projectPath
     private List<String> parametersList
     private IPlatformRunner runner
+    private boolean deployOnBuild
+    private String publishProfileName
+    private String passwordCredentialId
 
     MsBuildBuilder(){
         this.msbuild = "msbuild.exe"
         this.projectPath = ""
         this.parametersList = new ArrayList<>()
+        this.deployOnBuild = false
+        this.publishProfileName = null
+        this.passwordCredentialId = null
     }
 
     MsBuildBuilder(String toolPath, context, IPlatformRunner runner){
@@ -54,6 +60,10 @@ class MsBuildBuilder implements ICompiler {
         return this.addParameter("/t:rebuild")
     }
 
+    MsBuildBuilder setToRestore() {
+        return this.addParameter("/t:Restore")
+    }
+
     @Override
     MsBuildBuilder setPlatform(String platform) {
         if(platform != null && platform.trim().length() > 0){
@@ -70,9 +80,28 @@ class MsBuildBuilder implements ICompiler {
         return this
     }
 
+    MsBuildBuilder setPublishProfileByName(String name) {
+        return this.addParameter("/p:PublishProfile=\"$name\"")
+    }
+
+    MsBuildBuilder setDeployOnBuild() {
+        return this.addParameter("/p:DeployOnBuild=true")
+    }
+
+    MsBuildBuilder setPassword(String passwordCredentialId) {
+        this.passwordCredentialId = passwordCredentialId
+        return this
+    }
+
+
     @Override
     void run(){
-        this.runner.run(this.getCommand())
+        if(this.passwordCredentialId == null )
+            this.runner.run(this.getCommand())
+        else
+            this.ctx.withCredentials([string(credentialsId: "${this.passwordCredentialId}", variable: 'PASSWORD')]) {
+                this.runner.run(this.getCommand()+ " " + this.getPasswordParam("$PASSWORD"))
+            }
     }
 
     @Override
@@ -93,4 +122,7 @@ class MsBuildBuilder implements ICompiler {
         return strBuilder.toString()
     }
 
+    private String getPasswordParam(String password){
+        return "/p:Password=\"$password\""
+    }
 }
