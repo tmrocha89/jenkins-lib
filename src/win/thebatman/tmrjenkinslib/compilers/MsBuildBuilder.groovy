@@ -82,11 +82,14 @@ class MsBuildBuilder implements ICompiler {
 
     private String getParams(){
         StringBuilder strBuilder = new StringBuilder()
-        this.parametersList.each{
-            strBuilder.append(it)
-            strBuilder.append(" ")
+        if (this.parametersList.size() > 0){
+            this.parametersList.each{
+                strBuilder.append(it)
+                strBuilder.append(" ")
+            }
+            strBuilder.setLength(strBuilder.length() - 1,)
         }
-        strBuilder.setLength(strBuilder.length() - 1,)
+
         return strBuilder.toString()
     }
 

@@ -45,11 +45,13 @@ class ZipCompressionBuilder implements ICompressionBuilder{
 
     private String getGlobParams(){
         StringBuilder strBuilder = new StringBuilder()
-        this.globPattern.each{
-            strBuilder.append(it)
-            strBuilder.append(",")
+        if (this.globParams.length() > 0){
+            this.globPattern.each{
+                strBuilder.append(it)
+                strBuilder.append(",")
+            }
+            strBuilder.setLength(strBuilder.length() - 1,)
         }
-        strBuilder.setLength(strBuilder.length() - 1,)
         return strBuilder.toString()
     }
 }
