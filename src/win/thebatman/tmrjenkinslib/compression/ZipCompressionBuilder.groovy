@@ -16,7 +16,7 @@ class ZipCompressionBuilder implements ICompressionBuilder{
 
     @Override
     ICompressionBuilder setFileName(String fileName) {
-        this.zipName = "\"$fileName\""
+        this.zipName = "$fileName"
         return this
     }
 
