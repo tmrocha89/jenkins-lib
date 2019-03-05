@@ -116,7 +116,7 @@ class MsBuildBuilder implements ICompiler {
                 strBuilder.append(it)
                 strBuilder.append(" ")
             }
-            strBuilder.setLength(strBuilder.length() - 1,)
+            strBuilder.setLength(strBuilder.length() - 1)
         }
 
         return strBuilder.toString()
