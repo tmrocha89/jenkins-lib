@@ -7,15 +7,16 @@
 def call(parameters, body) {
     def isString = parameters in String || parameters in GString
 
-    def name = null
-    def ignoreBuildStatus = false
-    def finisheWithErrorState = 'FAILURE'
+    String name = null
+    boolean ignoreBuildStatus = false
+    boolean finisheWithErrorState = 'FAILURE'
 
-    if(!isString){
+    if(isString){
         name = parameters
     } else {
         name = parameters['name']
         ignoreBuildStatus = parameters['ignoreBuildStatus'] ?: false
+        finisheWithErrorState = parameters['finishWithErrorState']
     }
 
     milestone()
